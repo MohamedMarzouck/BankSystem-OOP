@@ -140,6 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BankSystem.cpp" />
+    <ClCompile Include="clsDate.cpp" />
+    <ClCompile Include="clsPerson.cpp" />
+    <ClCompile Include="clsString.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="clsDate.h" />
+    <ClInclude Include="clsPerson.h" />
+    <ClInclude Include="clsString.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
