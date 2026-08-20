@@ -34,7 +34,7 @@ public:
 
     static bool IsDateBetween(clsDate Date, clsDate From, clsDate To);
 
-    static string ReadString(const string& Msg);
+    static string ReadString(const string& Msg = "");
 
 };
 

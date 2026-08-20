@@ -223,5 +223,15 @@ public:
 
 	static string FormatDate(const clsDate& Date, string Format = "dd/mm/yyyy");
 
+	static string GetSystemDateTimeString()
+	{
+		time_t t = time(0);
+		tm* now = localtime(&t);
+
+		char buffer[80];
+		strftime(buffer, sizeof(buffer), "%d/%m/%Y - %H:%M:%S", now);
+
+		return string(buffer);
+	}
 };
 

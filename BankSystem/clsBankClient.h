@@ -10,7 +10,6 @@ using namespace std;
 const string ClienttsFileName = "ClientsFile.txt";
 
 
-
 class clsBankClient : public clsPerson
 {
 private:
@@ -73,6 +72,9 @@ public:
 	};
 	enSaveResult Save();
 	void deleteClient();
+
+	void Deposit(int Amount);
+	void Withdraw(int Amount);
 
 
 };
