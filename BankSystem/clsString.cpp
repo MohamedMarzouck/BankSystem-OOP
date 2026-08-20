@@ -1,5 +1,10 @@
 #include "clsString.h"
 
+string clsString::_GetSeperator()
+{
+    return Delim;
+}
+
 clsString::clsString() : _Value("")
 {
 }
@@ -17,6 +22,11 @@ string clsString::GetValue()
     return _Value;
 }
 
+
+string clsString::GetSeperator()
+{
+    return _GetSeperator();
+}
 
 short clsString::Length(const string& str)
 {

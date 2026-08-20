@@ -2,9 +2,15 @@
 
 
 #include <iostream>
+#include "clsMainMenuScreen.h"
+#include "clsBankClient.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    clsMainMenuScreen::MainMenuScreen();
+
+    
+
+    return 0;
 }
 

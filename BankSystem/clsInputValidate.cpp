@@ -63,7 +63,7 @@ double clsInputValidate::ReadDblNumber(const string& Message, const string& Erro
 
 short clsInputValidate::ReadShortNumberBetween(short From, short To)
 {
-    string PromptMsg = "Please enter a number between [" + to_string(From) + " and " + to_string(To) + "]: ";
+    string PromptMsg = "Please enter a number between [" + to_string(From) + " and " + to_string(To) + "]:   ";
     short Number = ReadShortNumber(PromptMsg);
 
     while (!IsNumberBetween(Number, From, To))
@@ -73,7 +73,7 @@ short clsInputValidate::ReadShortNumberBetween(short From, short To)
 }
 int clsInputValidate::ReadIntNumberBetween(int From, int To)
 {
-    string PromptMsg = "Please enter a number between [" + to_string(From) + " and " + to_string(To) + "]: ";
+    string PromptMsg = "Please enter a number between [" + to_string(From) + " and " + to_string(To) + "]:   ";
     int Number = ReadIntNumber(PromptMsg);
 
     while (!IsNumberBetween(Number, From, To))
@@ -83,7 +83,7 @@ int clsInputValidate::ReadIntNumberBetween(int From, int To)
 }
 double clsInputValidate::ReadDblNumberBetween(int From, int To)
 {
-    string PromptMsg = "Please enter a number between [" + to_string(From) + " and " + to_string(To) + "]: ";
+    string PromptMsg = "Please enter a number between [" + to_string(From) + " and " + to_string(To) + "]:   ";
     double Number = ReadDblNumber(PromptMsg);
 
     while (!IsNumberBetween(Number, From, To))

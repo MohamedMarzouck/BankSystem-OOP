@@ -11,6 +11,7 @@ const string Delim = "#||#";
 class clsString
 {
     string _Value;
+    string _GetSeperator();
 public:
     clsString();
     clsString(string Value);
@@ -19,6 +20,7 @@ public:
     __declspec(property(get = GetValue, put = SetValue)) string Value;
     //---------------------------------------------------------------;
 
+    string GetSeperator();
     static short Length(const string& str);
     short Length();
 
