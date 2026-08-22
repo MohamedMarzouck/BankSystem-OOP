@@ -1,16 +1,6 @@
 
 #include "clsUser.h"
 
-string clsUser::_LoginRegisterRecord(const string& Seperator)
-{
-    string RegisterData = "";
-    RegisterData += _UserName + Seperator;
-    RegisterData += _Password + Seperator;
-    RegisterData += to_string(_Permissions) + Seperator;
-    RegisterData += clsDate::GetSystemDateTimeString();
-    return RegisterData;
-}
-
 string clsUser::_ConvertUserObjectToLine(const clsUser& User, const string& Seperator)
 {
     string UserData = "";
@@ -138,6 +128,11 @@ short clsUser::_ReadPermissions()
     cin >> Answer;
     if (toupper(Answer) == 'Y')
         Permissions += enPermissions::pTransaction;
+
+    cout << "\nLogin Register[Y, N]:   ";
+    cin >> Answer;
+    if (toupper(Answer) == 'Y')
+        Permissions += enPermissions::pLoginRegister;
 
     cout << "\nDManage users[Y, N]:   ";
     cin >> Answer;

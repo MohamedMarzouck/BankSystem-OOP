@@ -11,7 +11,6 @@
 
 
 const string UsersFileName = "UsersFile.txt";
-const string LoginRegisterFileName = "RegisterFile.txt";
 
 
 class clsUser : public clsPerson
@@ -31,8 +30,6 @@ private:
 	short _Permissions;
 	bool _MarkUserForDelete = false;
 
-
-	string _LoginRegisterRecord(const string& Seperator = "#||#");
 	static string _ConvertUserObjectToLine(const clsUser& User, const string& Seperator = "#||#");
 	static void _AddDataLineToFile(const string& FileName, const string& Line);
 	static clsUser _ConvertLineDataToUserObject(string Line);
@@ -63,7 +60,6 @@ public:
 	__declspec(property(get = GetPermissions, put = SetPermissions)) short Permissions;
 	static string GetUserFile();
 
-
 	static vector<clsUser> ListUsers();
 	bool IsEmpty();
 	static bool IsUserExist(const string& uName);
@@ -88,20 +84,19 @@ public:
 	enum enPermissions
 	{
 		pAll = -1,
+
 		pClientsList = 1,
 		pAddNewClient = 2,
 		pFindClient = 4,
 		pUpdateClient = 8,
 		pDeleteClient = 16,
 		pTransaction = 32,
-		pManageUsers = 64
+		pLoginRegister = 64,
+		pManageUsers = 128
 	};
 
 	bool CheckAccessPermissions(enPermissions Permissions);
-	void AddRegisterLoginToFile()
-	{
-		_AddDataLineToFile(LoginRegisterFileName, _LoginRegisterRecord());
-	}
+
 
 };
 

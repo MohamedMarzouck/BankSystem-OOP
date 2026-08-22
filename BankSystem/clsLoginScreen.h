@@ -5,6 +5,7 @@
 #include "clsUser.h"
 #include "clsGlobal.h"
 #include "clsMainMenuScreen.h"
+#include "clsLoginRegister.h"
 
 class clsLoginScreen : protected clsScreen
 {
@@ -38,46 +39,12 @@ public:
 
 		if (_FindUser())
 		{
-			CurrentUser.AddRegisterLoginToFile();
+			clsLoginRegister::RegisterLogin(CurrentUser.UserName, CurrentUser.Password, CurrentUser.Permissions);
 			clsMainMenuScreen::MainMenuScreen();
 		}
 	}
 };
 
-
-
-//static bool _Login()
-//{
-//	string UserName;
-//	string Password;
-//	bool LoginFailed = false;
-//	short FailedAttempts = 3;
-//
-//	do
-//	{
-//		if (LoginFailed)
-//		{
-//			FailedAttempts--;
-//			cout << "\nInvalid username or password!, you have " << FailedAttempts << " Trial(s) left.\n";
-//		}
-//
-//		if (FailedAttempts == 0)
-//		{
-//			cout << "\nYou are Locked after 3 failed attempts.\n";
-//			return false;
-//		}
-//
-//		UserName = clsInputValidate::ReadString("\nEnter Username:   ");
-//		Password = clsInputValidate::ReadString("Enter Password:   ");
-//
-//		CurrentUser = clsUser::Find(UserName, Password);
-//
-//		LoginFailed = CurrentUser.IsEmpty();
-//
-//	} while (LoginFailed);
-//
-//	return true;
-//}
 
 
 
