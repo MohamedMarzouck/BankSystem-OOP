@@ -223,12 +223,11 @@ public:
 	__declspec(property(get = Get_Amount, put = Set_Amount)) int Amount;
 
 
-
 	static string GetTransferLogFile()
 	{
 		return _GetTransferLogFile();
 	}
-	static void AddTransferLogInFile(clsTransferLog& Log)
+	static void AddTransferLogToFile(clsTransferLog& Log)
 	{
 		_AddDataLineToFile(GetTransferLogFile(), _ConvertTransferLogObjectToLine(Log));
 	}
@@ -236,6 +235,25 @@ public:
 	{
 		vector<clsTransferLog> vLogs = _LoadTransferLogsObjectFromFile(GetTransferLogFile());
 		return vLogs;
+	}
+	static void RegisterTransferLog(const clsBankClient& ClientFrom, const clsBankClient& ClientTo, double Amount)
+	{
+		clsTransferLog Log;
+
+		Log.AccNumberFrom = ClientFrom.AccNumber;
+		Log.NameFrom = ClientFrom.Name;
+		Log.BalanceFromAfter = ClientFrom.AccBalance;
+		Log.BalanceFromBefor = Log.BalanceFromAfter + Amount;
+		Log.Amount = Amount;
+
+		Log.AccNumberTo = ClientTo.AccNumber;
+		Log.NameTo = ClientTo.Name;
+		Log.BalanceToAfter = ClientTo.AccBalance;
+		Log.BalanceToBefor = Log.BalanceToAfter - Amount;
+		Log.DateTime = clsDate::GetSystemDateTimeString();
+
+		AddTransferLogToFile(Log);
+
 	}
 
 

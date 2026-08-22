@@ -73,8 +73,8 @@ public:
 	enSaveResult Save();
 	void deleteClient();
 
-	void Deposit(int Amount);
-	void Withdraw(int Amount);
+	void Deposit(double Amount);
+	void Withdraw(double Amount);
 
 
 };

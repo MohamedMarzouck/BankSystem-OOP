@@ -7,8 +7,11 @@
 
 #include "clsPerson.h"
 #include "clsString.h"
+#include "clsDate.h"
+
 
 const string UsersFileName = "UsersFile.txt";
+const string LoginRegisterFileName = "RegisterFile.txt";
 
 
 class clsUser : public clsPerson
@@ -29,7 +32,7 @@ private:
 	bool _MarkUserForDelete = false;
 
 
-
+	string _LoginRegisterRecord(const string& Seperator = "#||#");
 	static string _ConvertUserObjectToLine(const clsUser& User, const string& Seperator = "#||#");
 	static void _AddDataLineToFile(const string& FileName, const string& Line);
 	static clsUser _ConvertLineDataToUserObject(string Line);
@@ -81,10 +84,7 @@ public:
 	};
 	enSaveResult Save();
 	void deleteUser();
-	static short ReadPermissions()
-	{
-		return _ReadPermissions();
-	}
+	static short ReadPermissions();
 	enum enPermissions
 	{
 		pAll = -1,
@@ -96,21 +96,12 @@ public:
 		pTransaction = 32,
 		pManageUsers = 64
 	};
-	//static bool CheckAccessPermissions(enPermissions Permissions)
-	//{
-	//	if (CurrentUser.Permissions == -1) return true;
-	//	if (CurrentUser.Permissions & Permissions == Permissions) return true;
 
-	//	return false;
-	//}
-	bool CheckAccessPermissions(enPermissions Permissions)
+	bool CheckAccessPermissions(enPermissions Permissions);
+	void AddRegisterLoginToFile()
 	{
-		if (this->Permissions == enPermissions::pAll) return true;
-		if ((this->Permissions & Permissions) == Permissions) return true;
-
-		return false;
+		_AddDataLineToFile(LoginRegisterFileName, _LoginRegisterRecord());
 	}
-
 
 };
 

@@ -37,7 +37,10 @@ public:
 		_ScreenHeader("\t\t Login Screen");
 
 		if (_FindUser())
+		{
+			CurrentUser.AddRegisterLoginToFile();
 			clsMainMenuScreen::MainMenuScreen();
+		}
 	}
 };
 

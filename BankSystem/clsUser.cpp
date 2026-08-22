@@ -1,6 +1,16 @@
 
 #include "clsUser.h"
 
+string clsUser::_LoginRegisterRecord(const string& Seperator)
+{
+    string RegisterData = "";
+    RegisterData += _UserName + Seperator;
+    RegisterData += _Password + Seperator;
+    RegisterData += to_string(_Permissions) + Seperator;
+    RegisterData += clsDate::GetSystemDateTimeString();
+    return RegisterData;
+}
+
 string clsUser::_ConvertUserObjectToLine(const clsUser& User, const string& Seperator)
 {
     string UserData = "";
@@ -300,3 +310,17 @@ void clsUser::deleteUser()
     Save();
     *this = _GetEmptyUserObject();
 }
+
+bool clsUser::CheckAccessPermissions(enPermissions Permissions)
+{
+    if (this->Permissions == enPermissions::pAll) return true;
+    if ((this->Permissions & Permissions) == Permissions) return true;
+
+    return false;
+}
+
+short clsUser::ReadPermissions()
+{
+    return _ReadPermissions();
+}
+

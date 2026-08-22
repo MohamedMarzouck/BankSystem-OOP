@@ -28,11 +28,19 @@ class clsTtransferBalanceScreen : protected clsScreen
 		return false;
 	}
 
+	static void _PrintClientCard(const clsBankClient& Client)
+	{
+		cout << "\n-----------------------";
+		cout << "\nAcc Number :   " << Client.AccNumber;
+		cout << "\nName       :   " << Client.Name;
+		cout << "\nAcc Balance:   " << Client.AccBalance;
+		cout << "\n-----------------------\n";
+	}
 
 public:
 	static void TransferScreen()
 	{
-		_ScreenHeader("\t\tt Deposit Screen");
+		_ScreenHeader("\t\t Transfer Balance Screen");
 
 		clsBankClient ClientFrom;
 		clsBankClient ClientTo;
@@ -43,11 +51,7 @@ public:
 			cout << "\nAccountt number with [" << ClientFrom.AccNumber << "] is wrong.\n";
 			return;
 		}
-		cout << "\n-----------------------";
-		cout << "\nAcc Number :   " << ClientFrom.AccNumber;
-		cout << "\nName       :   " << ClientFrom.Name;
-		cout << "\nAcc Balance:   " << ClientFrom.AccBalance;
-		cout << "\n-----------------------\n";
+		_PrintClientCard(ClientFrom);
 
 		cout << "\nEnter the account number transfer to:   ";
 		if (!_FindClientByAccountNumber(ClientTo))
@@ -55,11 +59,7 @@ public:
 			cout << "\nAccountt number is wrong with [" << ClientTo.AccNumber << "] is wrong.\n";
 			return;
 		}
-		cout << "\n-----------------------";
-		cout << "\nAcc Number :   " << ClientTo.AccNumber;
-		cout << "\nName       :   " << ClientTo.Name;
-		cout << "\nAcc Balance:   " << ClientTo.AccBalance;
-		cout << "\n-----------------------\n";
+		_PrintClientCard(ClientTo);
 
 		if (ClientFrom.AccNumber == ClientTo.AccNumber)
 		{
@@ -68,9 +68,9 @@ public:
 		}
 
 
-		int Amount = 0;
+		double Amount = 0;
 		Amount = clsInputValidate::ReadDblNumber("\nEnter the transfer Amount:   ");
-		if (Amount <= 0 || Amount > ClientFrom.AccBalance || Amount % 20 != 0)
+		if (Amount <= 0 || Amount > ClientFrom.AccBalance)
 		{
 			cout << "\nThe amount is invalid!";
 			return;
@@ -83,43 +83,18 @@ public:
 		{
 			ClientFrom.Withdraw(Amount);
 			ClientTo.Deposit(Amount);
+
 			cout << "\nDone Successfully.";
-			cout << "\n-----------------------";
-			cout << "\nAcc Number :   " << ClientFrom.AccNumber;
-			cout << "\nName       :   " << ClientFrom.Name;
-			cout << "\nAcc Balance:   " << ClientFrom.AccBalance;
-			cout << "\n-----------------------";
-			cout << "\n-----------------------";
-			cout << "\nAcc Number :   " << ClientTo.AccNumber;
-			cout << "\nName       :   " << ClientTo.Name;
-			cout << "\nAcc Balance:   " << ClientTo.AccBalance;
-			cout << "\n-----------------------\n";
+			_PrintClientCard(ClientFrom);
+			_PrintClientCard(ClientTo);
+
+			
+			clsTransferLog::RegisterTransferLog(ClientFrom, ClientTo, Amount);
 		}
 		else
 		{
 			cout << "\ntransfer Operation Cancelled.\n";
-			return;
 		}
-		//--------------------------------------;
-		//--------------------------------------;
-		//--------------------------------------;
-		clsTransferLog Log;
-		Log.AccNumberFrom = ClientFrom.AccNumber;
-		Log.NameFrom = ClientFrom.Name;
-		Log.BalanceFromAfter = ClientFrom.AccBalance; // ***;
-		Log.BalanceFromBefor = Log.BalanceFromAfter + Amount;
-		Log.Amount = Amount;
-
-		Log.AccNumberTo = ClientTo.AccNumber;
-		Log.NameTo = ClientTo.Name;
-		Log.BalanceToAfter = ClientTo.AccBalance; // ***;
-		Log.BalanceToBefor = Log.BalanceToAfter - Amount;
-		Log.DateTime = clsDate::GetSystemDateTimeString();
-
-		clsTransferLog::AddTransferLogInFile(Log);
-		//---------------------------------------;
-		//---------------------------------------;
-		//---------------------------------------;
 	}
 };
 

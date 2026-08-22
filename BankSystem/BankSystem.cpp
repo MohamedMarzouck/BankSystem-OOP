@@ -1,6 +1,4 @@
 
-
-
 #include <iostream>
 #include "clsLoginScreen.h"
 clsUser CurrentUser;
@@ -8,9 +6,7 @@ clsUser CurrentUser;
 int main()
 {
     
-        clsLoginScreen::LoginScreen();
-
-    
+    clsLoginScreen::LoginScreen();
 
     return 0;
 }

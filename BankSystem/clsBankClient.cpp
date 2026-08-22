@@ -242,12 +242,12 @@ void clsBankClient::deleteClient()
     *this = _GetEmptyClientObject();
 }
 
-void clsBankClient::Deposit(int Amount)
+void clsBankClient::Deposit(double Amount)
 {
     _AccBalance += Amount;
     Save();
 }
-void clsBankClient::Withdraw(int Amount)
+void clsBankClient::Withdraw(double Amount)
 {
     _AccBalance -= Amount;
     Save();

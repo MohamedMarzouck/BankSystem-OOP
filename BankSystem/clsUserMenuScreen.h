@@ -102,7 +102,7 @@ public:
             if (!_CheckAccessRights(clsUser::enPermissions::pManageUsers)) return;
 
             cout << setw(37) << left << "" << "===========================================\n";
-            cout << setw(37) << left << "" << "\t\t Transaction Menu\n";
+            cout << setw(37) << left << "" << "\t\t User Management Menu\n";
             cout << setw(37) << left << "" << "===========================================\n";
             cout << setw(37) << left << "" << "\t[1] List Users.\n";
             cout << setw(37) << left << "" << "\t[2] Add User.\n";
