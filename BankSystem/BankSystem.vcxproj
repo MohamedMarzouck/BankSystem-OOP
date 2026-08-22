@@ -145,16 +145,22 @@
     <ClCompile Include="clsInputValidate.cpp" />
     <ClCompile Include="clsPerson.cpp" />
     <ClCompile Include="clsString.cpp" />
+    <ClCompile Include="clsUser.cpp" />
     <ClCompile Include="clsUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsAddNewClient.h" />
+    <ClInclude Include="clsAddNewUserScreen.h" />
     <ClInclude Include="clsBankClient.h" />
     <ClInclude Include="clsDate.h" />
     <ClInclude Include="clsDeleteClientScreen.h" />
+    <ClInclude Include="clsDeleteUserScreen.h" />
     <ClInclude Include="clsDepositScreen.h" />
     <ClInclude Include="clsFindClientScreen.h" />
+    <ClInclude Include="clsFindUserScreen.h" />
+    <ClInclude Include="clsGlobal.h" />
     <ClInclude Include="clsInputValidate.h" />
+    <ClInclude Include="clsLoginScreen.h" />
     <ClInclude Include="clsMainMenuScreen.h" />
     <ClInclude Include="clsPerson.h" />
     <ClInclude Include="clsScreen.h" />
@@ -166,8 +172,12 @@
     <ClInclude Include="clsTtransactionMenuScreeen.h" />
     <ClInclude Include="clsTtransferBalanceScreen.h" />
     <ClInclude Include="clsUpdateClientScreen.h" />
+    <ClInclude Include="clsUpdateUserScreen.h" />
+    <ClInclude Include="clsUser.h" />
+    <ClInclude Include="clsUserMenuScreen.h" />
     <ClInclude Include="clsUtil.h" />
     <ClInclude Include="clsWithdrawScreen.h" />
+    <ClInclude Include="clsUsersListScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

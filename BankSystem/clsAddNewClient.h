@@ -3,6 +3,7 @@
 #include "clsScreen.h"
 #include "clsInputValidate.h"
 #include "clsBankClient.h"
+#include "clsUser.h"
 
 
 class clsAddNewClient : protected clsScreen
@@ -42,7 +43,8 @@ class clsAddNewClient : protected clsScreen
 public:
 	static void AddNewClientScreen()
 	{
-		clsScreen::_ScreenHeader("\n\t Add New Client Screen");
+		_ScreenHeader("\t Add New Client Screen");
+		if (!_CheckAccessRights(clsUser::enPermissions::pAddNewClient)) return;
 
 		clsBankClient Client;
 		string AccountNumber;

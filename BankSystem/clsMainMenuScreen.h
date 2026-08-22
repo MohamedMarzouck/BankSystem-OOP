@@ -11,6 +11,7 @@
 #include "clsDeleteClientScreen.h"
 #include "clsTtransactionMenuScreeen.h"
 #include "clsTtransactionMenuScreeen.h"
+#include "clsUserMenuScreen.h"
 
 
 using namespace std;
@@ -64,8 +65,11 @@ class clsMainMenuScreen : protected clsScreen
             break;
         case eTransactionMenu:
             _TtransactionMenuScreeen();
+            _GoBackToMainMenu();
             break;
         case eManageUser:
+            _UserMenuScreen();
+            _GoBackToMainMenu();
             break;
         case eLogout:
             break;
@@ -95,6 +99,10 @@ class clsMainMenuScreen : protected clsScreen
     static void _TtransactionMenuScreeen()
     {
         clsTtransactionMenuScreeen::TransactionMenuScreen();
+    }
+    static void _UserMenuScreen()
+    {
+        clsUserMenuScreen::UserMenuScreen();
     }
 
 

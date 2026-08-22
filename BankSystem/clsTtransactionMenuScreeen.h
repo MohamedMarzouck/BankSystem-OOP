@@ -8,6 +8,7 @@
 #include "clsTotalBalanceScreen.h"
 #include "clsTtransferBalanceScreen.h"
 #include "clsTransferLogScreen.h"
+#include "clsUser.h"
 
 
 class clsTtransactionMenuScreeen : protected clsScreen
@@ -97,6 +98,7 @@ public:
         do
         {
             _ScreenHeader("\t Transaction Menu Screen");
+            if (!_CheckAccessRights(clsUser::enPermissions::pTransaction)) return;
 
             cout << setw(37) << left << "" << "===========================================\n";
             cout << setw(37) << left << "" << "\t\t Transaction Menu\n";

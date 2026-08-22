@@ -4,6 +4,7 @@
 #include<iomanip>
 #include "clsBankClient.h"
 #include "clsScreen.h"
+#include "clsUser.h"
 
 
 class clsClientListScreen : protected clsScreen
@@ -26,7 +27,9 @@ public:
 	{
 		vector<clsBankClient> vClients = clsBankClient::ListClients();
 		string Subtitle = "\t   Number Of Clients = " + to_string(vClients.size()) + " Client(s)";
+
 		_ScreenHeader("\t   Clients Screen", Subtitle);
+		if (!_CheckAccessRights(clsUser::enPermissions::pClientsList)) return;
 
 		cout << "\n------------------------------------------------------------------------------------------------------------------------------------------------\n";
 		cout << "| " << setw(11) << left << "Acc Number";

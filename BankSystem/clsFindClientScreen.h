@@ -3,6 +3,7 @@
 #include "clsInputValidate.h"
 #include"clsBankClient.h"
 #include "clsScreen.h"
+#include "clsUser.h"
 
 class clsFindClientScreen : protected clsScreen
 {
@@ -27,7 +28,8 @@ class clsFindClientScreen : protected clsScreen
 public:
 	static void FindClientScreen()
 	{
-		clsScreen::_ScreenHeader("\n\t Find Client Screen");
+		_ScreenHeader("\n\t Find Client Screen");
+		if (!_CheckAccessRights(clsUser::enPermissions::pFindClient)) return;
 
 		clsBankClient Client;
 		if (_FindClientByAccountNumber(Client))

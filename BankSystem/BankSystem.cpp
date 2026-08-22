@@ -2,12 +2,13 @@
 
 
 #include <iostream>
-#include "clsMainMenuScreen.h"
-#include "clsBankClient.h"
+#include "clsLoginScreen.h"
+clsUser CurrentUser;
 
 int main()
 {
-    clsMainMenuScreen::MainMenuScreen();
+    
+        clsLoginScreen::LoginScreen();
 
     
 

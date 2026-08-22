@@ -2,7 +2,7 @@
 #include "clsPerson.h"
 
 clsPerson::clsPerson() : _Name(""), _Phone(""), _Email(""), _Address("") {}
-clsPerson::clsPerson(string Name, string Phone, string Email, string Address) : _Name(Name), _Phone(Phone), _Email(Email), _Address(Address) {}
+clsPerson::clsPerson(string Name, string Email, string Phone, string Address) : _Name(Name), _Phone(Phone), _Email(Email), _Address(Address) {}
 
 
 void clsPerson::SetName(string Name)

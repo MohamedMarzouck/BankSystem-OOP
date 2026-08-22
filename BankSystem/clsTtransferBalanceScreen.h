@@ -97,7 +97,7 @@ public:
 		}
 		else
 		{
-			cout << "\Ttransfer Operation Cancelled.\n";
+			cout << "\ntransfer Operation Cancelled.\n";
 			return;
 		}
 		//--------------------------------------;
