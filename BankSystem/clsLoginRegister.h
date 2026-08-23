@@ -6,6 +6,7 @@
 #include <string>
 #include "clsString.h"
 #include "clsDate.h"
+#include "clsUtil.h"
 
 using namespace std;
 
@@ -24,7 +25,8 @@ private:
 		string Line = "";
 		Line += Record.DateTime + Seperator;
 		Line += Record.UserName + Seperator;
-		Line += Record.Password + Seperator;
+		// Line += Record.Password + Seperator;
+		Line += clsUtil::EncryptText(Record.Password, 3) + Seperator;
 		Line += to_string(Record.Permissions);
 		return Line;
 	}
@@ -36,7 +38,7 @@ private:
 		if (vData.size() < 4)
 			return clsLoginRegister("", "", "", 0);
 
-		return clsLoginRegister(vData[0], vData[1], vData[2], stoi(vData[3]));
+		return clsLoginRegister(vData[0], vData[1], clsUtil::DecryptText(vData[2], 3), stoi(vData[3]));
 	}
 
 	static void _AddDataLineToFile(const string& Line)

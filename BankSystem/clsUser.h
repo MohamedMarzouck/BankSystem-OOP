@@ -8,6 +8,7 @@
 #include "clsPerson.h"
 #include "clsString.h"
 #include "clsDate.h"
+#include "clsUtil.h"
 
 
 const string UsersFileName = "UsersFile.txt";
@@ -27,7 +28,7 @@ private:
 	enMode _Mode;
 	string _UserName;
 	string _Password;
-	short _Permissions;
+	int _Permissions;
 	bool _MarkUserForDelete = false;
 
 	static string _ConvertUserObjectToLine(const clsUser& User, const string& Seperator = "#||#");
@@ -51,13 +52,13 @@ public:
 
 	void SetUserName(string UserName);
 	void SetPassword(string Password);
-	void SetPermissions(short Permissions);
+	void SetPermissions(int Permissions);
 	string GetUserName()const;
 	string GetPassword()const;
-	short GetPermissions()const;
+	int GetPermissions()const;
 	__declspec(property(get = GetUserName, put = SetUserName)) string UserName;
 	__declspec(property(get = GetPassword, put = SetPassword)) string Password;
-	__declspec(property(get = GetPermissions, put = SetPermissions)) short Permissions;
+	__declspec(property(get = GetPermissions, put = SetPermissions)) int Permissions;
 	static string GetUserFile();
 
 	static vector<clsUser> ListUsers();
@@ -92,7 +93,8 @@ public:
 		pDeleteClient = 16,
 		pTransaction = 32,
 		pLoginRegister = 64,
-		pManageUsers = 128
+		pManageUsers = 128,
+		pCurrencyExchange = 256
 	};
 
 	bool CheckAccessPermissions(enPermissions Permissions);

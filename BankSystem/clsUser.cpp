@@ -7,9 +7,10 @@ string clsUser::_ConvertUserObjectToLine(const clsUser& User, const string& Sepe
     UserData += User.Name + Seperator;
     UserData += User.Email + Seperator;
     UserData += User.Phone + Seperator;
-    UserData += User.Address + Seperator;
+    UserData += User.Address + Seperator;    // **********;
     UserData += User.UserName + Seperator;
-    UserData += User.Password + Seperator;
+    //UserData += User.Password + Seperator;
+    UserData += clsUtil::EncryptText(User.Password, 3) + Seperator;
     UserData += to_string(User.Permissions);
 
     return UserData;
@@ -38,10 +39,11 @@ clsUser clsUser::_ConvertLineDataToUserObject(string Line)
         vUsers[0],
         vUsers[1],
         vUsers[2],
-        vUsers[3],
+        vUsers[3],   // *******;
         vUsers[4],
-        vUsers[5],
-        stod(vUsers[6])
+        //vUsers[5],
+        clsUtil::DecryptText(vUsers[5], 3),
+        stoi(vUsers[6])
     );
 }
 vector<clsUser> clsUser::_LoadUsersObjectFromFile(const string& FileName)
@@ -180,7 +182,7 @@ void clsUser::SetPassword(string Password)
     _Password = Password;
 }
 
-void clsUser::SetPermissions(short Permissions)
+void clsUser::SetPermissions(int Permissions)
 {
     _Permissions = Permissions;
 }
@@ -195,7 +197,7 @@ string clsUser::GetPassword() const
     return _Password;
 }
 
-short clsUser::GetPermissions() const
+int clsUser::GetPermissions() const
 {
     return _Permissions;
 }

@@ -13,6 +13,7 @@
 #include "clsTtransactionMenuScreeen.h"
 #include "clsUserMenuScreen.h"
 #include "clsLoginRegisterScreen.h"
+#include "clsCurrencyExchangeMenuScreen.h"
 
 
 using namespace std;
@@ -29,11 +30,12 @@ class clsMainMenuScreen : protected clsScreen
         eTransactionMenu,
         eManageUser,
         eLoginRegidter,
+        eExchangeCurrency,
         eLogout
     };
     static enMainMenuOption _ReadMainMenuOption()
     {
-        short Option = clsInputValidate::ReadShortNumberBetween(1, 9);
+        short Option = clsInputValidate::ReadShortNumberBetween(1, 10);
         return enMainMenuOption(Option);
     }
     static void _GoBackToMainMenu()
@@ -77,6 +79,10 @@ class clsMainMenuScreen : protected clsScreen
             _LoginRegisterScreen();
             _GoBackToMainMenu();
             break;
+        case eExchangeCurrency:
+            _CurrencyExchangeScreen();
+            _GoBackToMainMenu();
+            break;
         case eLogout:
             break;
         }
@@ -114,6 +120,10 @@ class clsMainMenuScreen : protected clsScreen
     {
         clsLoginRegisterScreen::LoginRegisterScreen();
     }
+    static void _CurrencyExchangeScreen()
+    {
+        clsCurrencyExchangeMenuScreen::CurrencyExchangeScreen();
+    }
 
 
 public:
@@ -135,7 +145,8 @@ public:
             cout << setw(37) << left << "" << "\t[6] Transactions.\n";
             cout << setw(37) << left << "" << "\t[7] Manage Users.\n";
             cout << setw(37) << left << "" << "\t[8] Login Register.\n";
-            cout << setw(37) << left << "" << "\t[9] Logout.\n";
+            cout << setw(37) << left << "" << "\t[9] Exchange Currency.\n";
+            cout << setw(37) << left << "" << "\t[10] Logout.\n";
             cout << setw(37) << left << "" << "===========================================\n";
 
             Option = _ReadMainMenuOption();

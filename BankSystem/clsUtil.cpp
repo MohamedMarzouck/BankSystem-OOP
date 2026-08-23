@@ -151,7 +151,7 @@ string clsUtil::Tap(short NumberOfTabs)
 string clsUtil::EncryptText(string Text, short EncryptionKey)
 {
     for (short i = 0; i < Text.length(); i++)
-        Text[i] -= EncryptionKey;
+        Text[i] += EncryptionKey;
 
     return Text;
 }
@@ -159,7 +159,7 @@ string clsUtil::EncryptText(string Text, short EncryptionKey)
 string clsUtil::DecryptText(string Text, short EncryptionKey)
 {
     for (short i = 0; i < Text.length(); i++)
-        Text[i] += EncryptionKey;
+        Text[i] -= EncryptionKey;
 
     return Text;
 }

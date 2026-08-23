@@ -23,6 +23,7 @@ private:
 			CurrentUser = clsUser::Find(uName, Pass);
 
 			if (!CurrentUser.IsEmpty()) return true;
+
 			if (--FailedAttempt == 0) break;
 
 			cout << "\n\nInvalid username \ password!, you have only [" << FailedAttempt << "] trials left!";
